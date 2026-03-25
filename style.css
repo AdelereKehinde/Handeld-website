@@ -1799,4 +1799,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hero-title { font-size: 28px; }
   .section-title { font-size: 26px; }
   .footer-top { grid-template-columns: 1fr; }
+  .hero-app-shot { max-width: 220px; }
+  .hero-app-shot img { max-height: 50vh; }
+  .floating-chip { font-size: 10px; padding: 5px 8px; }
+  .chip-1 { top: 4%; left: -2%; }
+  .chip-2 { top: 64%; right: -2%; }
+  .chip-3 { bottom: 4%; left: 0; }
 }
