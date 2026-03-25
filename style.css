@@ -57,7 +57,13 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--soft-bg);
+  background:
+    linear-gradient(rgba(247,243,255,0.85), rgba(247,243,255,0.85)),
+    url('images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
@@ -215,6 +221,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+@keyframes aurora-shift {
+  0%   { transform: translate(-10%, -5%) rotate(0deg) scale(1); opacity: .55; }
+  50%  { transform: translate(6%, 4%) rotate(6deg) scale(1.06); opacity: .75; }
+  100% { transform: translate(-8%, -3%) rotate(-4deg) scale(.98); opacity: .6; }
+}
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; opacity: .18; }
+  50%  { background-position: 100% 50%; opacity: .35; }
+  100% { background-position: 0% 50%; opacity: .2; }
+}
+@keyframes sparkle-drift {
+  0%   { transform: translateY(0px) scale(1); opacity: .45; }
+  50%  { transform: translateY(-18px) scale(1.05); opacity: .75; }
+  100% { transform: translateY(0px) scale(1); opacity: .45; }
+}
 
 .fade-up { animation: fadeUp .7s ease both; }
 .delay-1 { animation-delay: .1s; }
@@ -351,6 +372,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute; inset: 0;
   pointer-events: none;
   z-index: 0;
+  background:
+    linear-gradient(rgba(15,8,32,0.12), rgba(247,243,255,0.18)),
+    url('images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-bg .aurora,
+.hero-bg .sparkles,
+.hero-bg .orb,
+.hero-bg .grid-lines,
+.hero-bg .hero-photo {
+  display: none;
+}
+.aurora {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  animation: aurora-shift 18s ease-in-out infinite;
+}
+.aurora-1 {
+  top: -120px;
+  right: -160px;
+  background: radial-gradient(circle, rgba(59,130,246,.28), rgba(192,132,252,.16), transparent 70%);
+  animation-duration: 20s;
+}
+.aurora-2 {
+  bottom: -160px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(168,85,247,.28), rgba(94,234,212,.16), transparent 70%);
+  animation-duration: 24s;
+  animation-delay: -6s;
+}
+.sparkles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.5) 0 2px, transparent 3px),
+    radial-gradient(circle at 30% 70%, rgba(255,255,255,.4) 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.45) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 60%, rgba(255,255,255,.35) 0 1px, transparent 2px),
+    radial-gradient(circle at 55% 15%, rgba(255,255,255,.35) 0 1px, transparent 2px);
+  background-size: 220px 220px;
+  animation: shimmer 12s ease-in-out infinite, sparkle-drift 9s ease-in-out infinite;
+  opacity: .3;
 }
 .orb {
   position: absolute;
@@ -1662,6 +1731,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   :root { --nav-h: 64px; }
+  body { background-attachment: scroll; }
 
   .hamburger { display: flex; }
   .mobile-overlay { display: block; pointer-events: none; }
