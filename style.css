@@ -58,8 +58,7 @@ html {
 body {
   font-family: 'DM Sans', sans-serif;
   background:
-    linear-gradient(rgba(247,243,255,0.85), rgba(247,243,255,0.85)),
-    url('images/background.jpg');
+    url('images/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
