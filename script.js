@@ -11,6 +11,8 @@
   const hamburger    = document.getElementById('hamburger');
   const navLinks     = document.getElementById('navLinks');
   const mobileOverlay = document.getElementById('mobileOverlay');
+  const storeModal    = document.getElementById('storeModal');
+  const storeModalName = document.getElementById('storeModalName');
 
   /* ═══════════════════════
      NAVBAR: scroll + mobile
@@ -44,6 +46,40 @@
     mobileOverlay.classList.remove('show');
     document.body.style.overflow = '';
   }
+
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     STORE MODAL
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+  const modalTriggers = document.querySelectorAll('[data-modal-trigger]');
+  const modalCloseEls = storeModal ? storeModal.querySelectorAll('[data-modal-close]') : [];
+
+  function openStoreModal(storeName = 'App Store') {
+    if (!storeModal) return;
+    storeModal.classList.add('show');
+    storeModal.setAttribute('aria-hidden', 'false');
+    if (storeModalName) storeModalName.textContent = storeName;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeStoreModal() {
+    if (!storeModal) return;
+    storeModal.classList.remove('show');
+    storeModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const storeName = trigger.getAttribute('data-store') || 'App Store';
+      openStoreModal(storeName);
+    });
+  });
+
+  modalCloseEls.forEach(el => el.addEventListener('click', closeStoreModal));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeStoreModal();
+  });
 
   /* ═══════════════════════
      SCROLL REVEAL

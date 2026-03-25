@@ -269,7 +269,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--purple-100);
 }
 .logo-text {
-  font-family: 'Sora', sans-serif;
+  font-family: 'sora', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: var(--text-dark);
@@ -389,10 +389,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(120deg, rgba(248,244,255,.9), rgba(248,244,255,.6)), url('images/adhd-hero.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.35;
+  background-image:
+    url('images/handled-app-icon.png');
+  background-size: cover, 600px;
+  background-position: center, 80% 20%;
+  background-repeat: no-repeat, no-repeat;
+  opacity: 0.32;
 }
 .hero-container {
   position: relative; z-index: 1;
@@ -479,15 +481,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   max-width: 420px;
   border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid rgba(192,132,252,.35);
-  box-shadow: var(--shadow-xl);
-  background: rgba(255,255,255,.7);
+  overflow: visible;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 .hero-app-shot img {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 28px;
+  filter: drop-shadow(0 18px 40px rgba(55,32,97,.28));
+  position: relative;
+  z-index: 2;
+}
+.hero-app-shot::after {
+  content: '';
+  position: absolute;
+  inset: 10% 6% 12%;
+  border-radius: 26px;
+  background: linear-gradient(140deg, rgba(255,255,255,.18), rgba(192,132,252,.08), rgba(59,130,246,.08));
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  z-index: 3;
+  pointer-events: none;
 }
 .app-glow {
   position: absolute;
@@ -495,7 +512,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 80px;
   background: radial-gradient(ellipse, rgba(168,85,247,.45), transparent 70%);
   filter: blur(20px);
-  z-index: -1;
+  z-index: 1;
 }
 .phone-mockup {
   position: relative;
